@@ -1,4 +1,3 @@
-"""Contains the worker class which is responsible for running graphs and transmitting results."""
 import asyncio
 import json
 import logging

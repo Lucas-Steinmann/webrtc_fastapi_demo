@@ -1,6 +1,6 @@
 # WebRTC FastAPI Demo
 
-This project is the example code alongside my blog post ["WebRTC DataChannel via FastAPI by example"](www.steinm.net/blog/webrtc_fastapi_demo_basics/)
+This project is the example code alongside my blog post ["WebRTC DataChannel via FastAPI by example"](https://www.steinm.net/blog/webrtc_fastapi_demo_basics/)
 
 ## Overview
 This project demonstrates the integration of WebRTC with FastAPI. 

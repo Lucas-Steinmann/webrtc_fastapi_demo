@@ -25,7 +25,7 @@ def setup_consumer_logic():
 
 async def consumer():
     pc = setup_consumer_logic()
-    async with websockets.connect("wss://msv-demo.preml.io/ws") as ws:
+    async with websockets.connect("ws://127.0.0.1:8000/ws") as ws:
         # Set offer locally, aiortc will automatically gather ICE candidates
         await pc.setLocalDescription(await pc.createOffer())
         # Send offer to server via our websocket

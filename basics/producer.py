@@ -5,7 +5,7 @@ import time
 
 import websockets
 from aiortc import RTCPeerConnection, RTCSessionDescription
-from aiortc.sdp import candidate_from_sdp
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -49,6 +49,7 @@ async def producer():
         # Receive session description from consumer
         data = await ws.recv()
         obj = RTCSessionDescription(**json.loads(data))
+        print(json.loads(data)['sdp'])
         await pc.setRemoteDescription(obj)
         # Build and send answer
         answer = await pc.createAnswer()
@@ -58,17 +59,6 @@ async def producer():
             "type": pc.localDescription.type
         })
         await ws.send(answer_data)
-        while True:
-            data = await ws.recv()
-            message = json.loads(data)
-            if message["type"] == "candidate" and message["candidate"]:
-                candidate = candidate_from_sdp(message["candidate"].split(":", 1)[1])
-                candidate.sdpMid = message["sdpMid"]
-                candidate.sdpMLineIndex = message["sdpMLineIndex"]
-                await pc.addIceCandidate(candidate)
-            else:
-                print("Received unknown message from consumer:", data)
-                break
         print("Signalling done, keeping loop running for one minute")
         # Signalling done, keep loop running for one minute
         await asyncio.sleep(60)

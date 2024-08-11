@@ -36,21 +36,21 @@ Also make sure the fast api server is reachable from the consumer and producer.
 Terminal/Host 1: Start the FastAPI server:  
 
 ```bash
-cd webrtc_fastapi_demo_basics/
+cd basics/
 fastapi dev
 ```
 
 Terminal/Host 2: Run the producer:  
 
 ```bash
-cd webrtc_fastapi_demo_basics/
+cd basics/
 python producer.py
 ```
 
 Terminal/Host 3: Run the consumer:
 
 ```bash
-cd webrtc_fastapi_demo_basics/
+cd basics/
 python consumer.py
 ```
 
